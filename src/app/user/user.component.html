@@ -1,0 +1,20 @@
+<div>
+    <!-- checks if the selected user is the current user which will highlight the button on the app user template -->
+    <button [class.active]="selected" (click)="onSelectedUser()" >
+        <!-- usage of Signals on selectedUser() -->
+        <!-- <img 
+            [src]="imagePath()"
+            [alt]="name()"
+        />
+        <span>{{ name() }}</span> -->
+        
+        <!-- usage of zone.js on selectedUser  -->
+        <img
+            [src]="imagePath" 
+            [alt]="user.name"
+        />
+        <span>{{ user.name }}</span> 
+       
+    </button>
+</div>
+

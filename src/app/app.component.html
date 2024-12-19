@@ -1,0 +1,31 @@
+<app-header />
+
+<main>
+  <ul id="users">
+    <!-- Dynamically output users in users array - using user.id as the unique value to track the contents in the array -->
+
+    <!-- - use *ngFor for legacy prior to Angular 16 -->
+    <!-- <li *ngFor="let user of users"> -->
+
+    <!-- @for supported since Angular 16  -->
+    @for (user of users; track user.id ) {
+    <li>
+      <app-user [user]="user" [selected]="user.id === selectedUserId" (select)="onSelectUser($event)" />
+    </li>
+    }
+  </ul>
+
+  <!-- Usage of the @if and @else statement -->
+  @if (selectedUser) {
+    <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
+  } @else {
+    <p id="fallback">Select a user to see their tasks!</p>
+  }
+
+  <!-- Usage of legacy *ngIf -->
+  <!-- <app-tasks *ngIf="selectedUser;  else fallback" [name]="selectedUser!.name" /> -->
+  <!--Use this as the else statement -->
+  <!-- <ng-template #fallback>
+    <p id="fallback">Select a user to see their tasks!</p>
+  </ng-template> -->
+</main>
